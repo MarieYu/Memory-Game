@@ -1,0 +1,16 @@
+/* styleMemo.css*/
+
+h1{
+	font-family: Verdana, Arial;
+	position: center;
+}
+
+span{
+	border-style: 2px, solid, black;
+	margin: 10px;
+}
+
+img{
+	width: 150px;
+	height: 150px;
+}
