@@ -26,7 +26,6 @@ $(function(){
 		"file:///E:/img/Memo/trifide.jpg"
 	];
 
-	//var nbRand; //pour stocker nb aléatoire d'index du tableau images
 	var nbImg = tabImg.length;//nb d'images soit taille du tableau d'images
 
 	function randImg(nbImg){
@@ -39,28 +38,42 @@ $(function(){
 		var indRand = []; //tableau vide pour stocker les index des images en 2 exemplaires de façon aléatoire
 		for(var ii=0, t=indList.length; ii<t; ii++){ //t=taille tableau indList à chaque boucle
 																					//(car on suppr un indice à chaque boucle qd indice choisi)
-			var nbRand = Math.floor(Math.random()*indList.length);
+			var nbRand = Math.floor(Math.random()*indList.length);//pour stocker nb aléatoire d'index du tableau images
 			indRand[ii] = indList[nbRand];
 			indList.splice(nbRand, 1);//supprime 1 élément à partir de l'index qui est défini par nbRand
 		}
 		console.log(indRand);
-		return indRand;
-		
+		return indRand;	
 	}
 
-	//création des éléments dans le DOM
+	//création des éléments dans le DOM (affichage aléatoire des images grâce à la 
+		//fonction randImg)
 
 	var randGame = randImg(nbImg); //fonction randImg
 	for(var ii=0; ii<randGame.length; ii++){
 		var span = $('<span>');
 		var img = $('<img>');
 
-		img.attr('src',tabImg[randGame[ii]]);
+
+		img.attr('src',tabImg[randGame[ii]]).hide();//ajoute la src correspondant à l'index généré dans le 
+																				//tableau d'index aléatoires
 		console.log(randGame[ii]);
 		
+
 		$('body').append(span);
-		span.append(img);
+		span.append(img);	
+
+		//sur clic, affiche l'image
+		$('span').on('click', function(e){
+			$(this).children().show();
+
+			
+
+		//$('img').show(); affiche toutes les images
+		});
+
 	}
+
 
 
 
