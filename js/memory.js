@@ -27,6 +27,9 @@ $(function(){
 	];
 
 	var nbImg = tabImg.length;//nb d'images soit taille du tableau d'images
+	var nbClic = 0;//nb de clic sur un span pour afficher l'image
+	var showImg = [];
+
 
 	function randImg(nbImg){
 		var indList = []; // tableau vide pour stocker les index des images en 2 exemplaires
@@ -58,21 +61,45 @@ $(function(){
 		img.attr('src',tabImg[randGame[ii]]).hide();//ajoute la src correspondant à l'index généré dans le 
 																				//tableau d'index aléatoires
 		console.log(randGame[ii]);
+		img.attr('alt', randGame[ii]);
 		
 
 		$('body').append(span);
 		span.append(img);	
-
-		//sur clic, affiche l'image
-		$('span').on('click', function(e){
-			$(this).children().show();
-
-			
-
-		//$('img').show(); affiche toutes les images
-		});
-
 	}
+
+
+	//Afficher l'image quand clic sur un span
+
+	$('span').on('click', function(e){
+		$(this).children().show();//sur clic, affiche l'image
+		$(this).attr('class', 'showImg');
+
+		nbClic++;
+		var img = $(this).children().attr('alt');//récup de l'indice mis dans alt
+		console.log(nbClic);
+		
+		showImg.push(img);
+		console.log(showImg);
+
+		if (nbClic === 2){
+			if(showImg[0]===showImg[1]){
+				console.log('find it');
+			}
+			else{
+				var id = setTimeout($('span.showImg').children().hide(), 3000);
+				
+				
+				console.log('failed');
+			}
+			clearTimeout(id); 
+			showImg = [];
+			nbClic=0;
+	
+	}); 
+
+setInterval()
+//$(this).children().alt
 
 
 
