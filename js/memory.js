@@ -62,6 +62,7 @@ $(function(){
 																				//tableau d'index aléatoires
 		console.log(randGame[ii]);
 		img.attr('alt', randGame[ii]);
+		span.addClass('inactive');
 		
 		$('body').append(span);
 		span.append(img);	
@@ -71,7 +72,7 @@ $(function(){
 	//Afficher l'image quand clic sur un span
 	$('span').on('click', function(e){
 		$(this).children().show();//sur clic, affiche l'image
-		$(this).attr('class', 'showImg');
+		$(this).removeClass('inactive').addClass('showImg');
 
 		nbClic++;
 		var img = $(this).children().attr('alt');//récup de l'indice mis dans alt
@@ -80,34 +81,32 @@ $(function(){
 		showImg.push(img);//renseigne le n°index de l'image dans le tableau showImg
 		console.log(showImg);
 
-		if (nbClic === 2){
-			nbClic = 0;
-			if(showImg[0]===showImg[1]){
-		
+
+		if (nbClic === 2){	
+			nbClic = 0;	
+			if(showImg[0]===showImg[1]){		
 				$('span.showImg').attr('class','found');//modifie la classe showImg à found
 				console.log('find it');
 			}
 			else{
-				setTimeout(function(){ //seul le 1er couple d'images non apparentées est caché après 2.5sec
+				var idTimeout = setTimeout(function(){ //seul le 1er couple d'images non apparentées est caché après 2.5sec
 					$('span.showImg').children().hide();
-					$('span.showImg').removeClass();
+					$('span').removeClass('showImg').addClass('inactive');
 					}, 2500);
-
-				//clearTimeout(idTimeout);
-				
-				/*$(this).children().hide();
-				$(this).children().prev().hide();*/
 				
 				console.log('failed');
 			}
-			//clearTimeout(idTimeout); 
 			showImg = [];
-			nbClic=0;
+			
 		}
+
+		//si on clique sur une nouvelle image sans attendre que les 2 précédentes se retournent:
+		/*if(nbClic === 3){
+			clearTimeout(idTimeout);
+			nbClic = 1;
+			$('span.inactive').children().hide();
+		}*/
 	}); 
-
-
-//$(this).children().alt
 
 
 
