@@ -16,14 +16,14 @@ $(function(){
 	];*/
 
 	var tabImg = [
-		"file:///E:/img/Memo/andromede.jpg",
-		"file:///E:/img/Memo/cateye.jpg",
-		"file:///E:/img/Memo/crabe.jpg",
-		"file:///E:/img/Memo/eagle.jpg",
-		"file:///E:/img/Memo/esquimeau.jpg",
-		"file:///E:/img/Memo/helix.jpg",
-		"file:///E:/img/Memo/orion.jpg",
-		"file:///E:/img/Memo/trifide.jpg"
+		"img/andromede.jpg",
+		"img/cateye.jpg",
+		"img/crabe.jpg",
+		"img/eagle.jpg",
+		"img/esquimeau.jpg",
+		"img/helix.jpg",
+		"img/orion.jpg",
+		"img/trifide.jpg"
 	];
 
 	var nbImg = tabImg.length;//nb d'images soit taille du tableau d'images
